@@ -1,7 +1,7 @@
 import { ProductI } from './../models/product';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +14,11 @@ export class ProductDetailComponent implements OnInit {
   product:ProductI
   loading: boolean = true;
 
-  constructor(private route:ActivatedRoute, private service:ProductsService) { }
+  constructor(private router:Router,private route:ActivatedRoute, private service:ProductsService) { }
+
+  goToProducts(){
+    this.router.navigate(['/products']);
+  }
 
   ngOnInit() {
     this.route.paramMap.switchMap(
