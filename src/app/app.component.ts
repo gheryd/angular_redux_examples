@@ -16,6 +16,7 @@ export class AppComponent {
       ,{title:"products", path:"/products"}
       ,{title:"counter", path:"/counter"}
       ,{title:"events", path:"/events"}
+      ,{title:"not found", path:"asdasdasd"}
     ]
 
   @select() logMessage:string

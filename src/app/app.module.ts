@@ -21,7 +21,8 @@ import { HomeComponent } from './home/home.component';
 import {ExampleDirectiveComponent} from './example-directive/example-directive.component';
 import { CounterComponent } from './counter/counter.component';
 import { ExampleEventsComponent } from './example-events/example-events.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component'
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { NotfoundComponent } from './notfound/notfound.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     ExampleDirectiveComponent,
     CounterComponent,
     ExampleEventsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
       ,{path: 'counter', component: CounterComponent}
       ,{path: 'events', component: ExampleEventsComponent}
       ,{path: 'product/:id', component: ProductDetailComponent}
+      ,{path: '**', component: NotfoundComponent}
     ])
   ],
   providers: [
