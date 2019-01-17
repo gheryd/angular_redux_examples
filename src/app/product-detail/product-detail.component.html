@@ -1,0 +1,24 @@
+<panel [enableFooter]="false">
+  <ng-container class="header">
+      product detail
+  </ng-container>
+  <ng-container class="body">
+    <div *ngIf="product && !loading">
+      <div>
+        id: <strong>{{product.id}}</strong>
+      </div>
+      <div>
+        name: <strong>{{product.name}}</strong>
+      </div>
+      <div>
+        description: <strong>{{product.description}}</strong>
+      </div>
+    </div>
+    <div *ngIf="!product && !loading">
+        product not found
+    </div>
+    <div *ngIf="loading">
+        loading...
+    </div>
+  </ng-container>
+</panel>

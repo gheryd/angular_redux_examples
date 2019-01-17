@@ -20,7 +20,8 @@ import { FormComponent } from './form/form.component';
 import { HomeComponent } from './home/home.component';
 import {ExampleDirectiveComponent} from './example-directive/example-directive.component';
 import { CounterComponent } from './counter/counter.component';
-import { ExampleEventsComponent } from './example-events/example-events.component'
+import { ExampleEventsComponent } from './example-events/example-events.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ExampleEventsComponent } from './example-events/example-events.componen
     HomeComponent,
     ExampleDirectiveComponent,
     CounterComponent,
-    ExampleEventsComponent
+    ExampleEventsComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,7 @@ import { ExampleEventsComponent } from './example-events/example-events.componen
       ,{path: 'products', component: ProductsComponent}
       ,{path: 'counter', component: CounterComponent}
       ,{path: 'events', component: ExampleEventsComponent}
+      ,{path: 'product/:id', component: ProductDetailComponent}
     ])
   ],
   providers: [

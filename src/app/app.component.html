@@ -2,12 +2,13 @@
   <div>
     <h4>Angular+Redux examples</h4>
   </div>
+  <small>redux message: {{logMessage|async}}</small>
   <div class="row">
       <div class="col-2 list-group">
           <a class="list-group-item list-group-item-action" 
             *ngFor="let item of menu" 
             routerLinkActive="active" 
-            [routerLink]="[item.path]"
+            [routerLink]="item.path"
             [routerLinkActiveOptions]="{exact:true}">{{item.title}}</a>
       </div>
       <div class="col">

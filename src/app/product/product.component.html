@@ -1,4 +1,7 @@
 <div>
     {{product.name}}
-    <button (click)="onProductRemove()">remove</button>
+    <div class="float-right">
+        <button class="btn btn-danger" (click)="onProductRemove()">remove</button>
+        <a class="btn btn-primary" [routerLink]="['/product', product.id]">detail</a>
+    </div>
 </div>

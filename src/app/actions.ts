@@ -16,11 +16,20 @@ export class AppAction{
         
     }
 
-    increment = () => this.dispatch({type: INCREMENT})
+    increment = () => {
+        this.dispatch({type: INCREMENT})
+        this.log("increment counter");
+    }
     
-    decrement = () => this.dispatch({type: DECREMENT})
+    decrement = () => {
+        this.dispatch({type: DECREMENT})
+        this.log("decrement counter");
+    }
     
-    reset = () => this.dispatch({type: RESET})
+    reset = () => {
+        this.dispatch({type: RESET})
+        this.log("reset counter");
+    }
     
     removeProduct(product:ProductI){
         this.dispatch({type:PRODUCT_REMOVE, product:product})

@@ -1,11 +1,15 @@
 <panel>
     <ng-container class="header">Products</ng-container>
     <ng-container class="body">
-        <ul class="list-group">
+        <ul *ngIf="!loading" class="list-group">
             <li *ngFor="let p of products |async" class="list-group-item">
                 <product [product]="p" (remove)="onProductRemove(p)"></product>
             </li>
+            <li class="list-group-item">
+                <product [product]="nonExistentProduct" (remove)="onProductRemove(nonExistentProduct)"></product>
+            </li>
         </ul>
+        <div *ngIf="loading">loading...</div>
     </ng-container>
     <ng-container class="footer">
         <button class="btn btn-primary" (click)="loadProducts()">reload products</button>

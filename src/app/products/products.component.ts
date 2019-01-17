@@ -12,13 +12,25 @@ export class ProductsComponent {
     title:string = "List of Products";
     @select()products:ProductI[];
     @Output() removeProduct = new EventEmitter()
-
+    nonExistentProduct:ProductI = {
+        id:-1,
+        name: "non-existent product",
+        description: "non-existent product description"
+    }
+    loading:boolean = false;
+    
     constructor(private appAction:AppAction, private service:ProductsService){
         this.loadProducts();
     }
 
     loadProducts(){
-        this.appAction.setProducts(this.service.getProducts());
+        this.loading = true;
+        this.service.getProducts().subscribe(
+            (products)=>{
+                this.loading = false;
+                this.appAction.setProducts(products)
+            }
+        )
     }
 
     onProductRemove(product){

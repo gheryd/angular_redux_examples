@@ -8,7 +8,7 @@ import {select} from 'ng2-redux'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  menu:{title:string, path:string}[] = 
+  menu:{title:string, path:any}[] = 
     [
       {title:"home", path:"/"}
       ,{title:"form", path:"/form"}
