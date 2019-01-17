@@ -1,0 +1,23 @@
+<panel [enableFooter]="false">
+  <ng-container class="header">Events</ng-container>
+  <div class="body">
+    <div class="col-sm">
+      <input (keyup)="onInput($event)" />
+      <span>{{keyInput}}</span> -
+      <span>{{textInput}}</span>
+    </div>
+    <div class="col-sm">
+      <input [(ngModel)]="email" />
+      <div>
+        <strong>uppercase:</strong> {{email|uppercase}}
+        <br />
+        <strong>camelize:</strong> {{email|camelize}}
+        <br />
+        <strong>amelize first:</strong> {{email|camelize:true}}
+      </div>
+      <div>{{44.4564564|number:'3.2-2'}}</div>
+      <div>{{44.4564564|currency:'€':true:'1.2-2'}}</div>
+      <div>{{myDate| date:'shortDate'}}</div>
+    </div>
+  </div>
+</panel>

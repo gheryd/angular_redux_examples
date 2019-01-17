@@ -1,0 +1,60 @@
+<form #f="ngForm">
+  <div class="form-group">
+    <label for="name">name:</label>
+    <input required minlength="2" pattern="[A-Za-z]*"
+            ngModel name="name" #name="ngModel" 
+            type="text" class="form-control" id="name">
+    <div class="text-danger" *ngIf="name.touched && name.invalid">
+      <div *ngIf="name.errors.required">name required</div>
+      <div *ngIf="name.errors.minlength">name should be minimun {{name.errors.minlength.requiredLength}} characters</div>
+      <div *ngIf="name.errors.pattern">name should have only alphabetical characters</div>
+    </div>
+    <ng-container *ngTemplateOutlet="infoInput; context: {$implicit:name}"></ng-container>
+  </div>
+  <div class="form-group">
+    <label for="surname">surname:</label>
+    <input required ngModel name="surname" #surname="ngModel"  type="text" class="form-control" id="surname">
+    <div class="text-danger" *ngIf="surname.touched && surname.invalid">surname invalid</div>
+    <ng-container *ngTemplateOutlet="infoInput; context: {$implicit:surname}"></ng-container>
+  </div>
+  <div class="form-check">
+    <input required ngModel name="privacy" #privacy="ngModel" type="checkbox" id="privacy" class="form-check-input" />
+    <label class="form-check-label" for="privacy">accept privacy...</label>
+    <div class="text-danger" *ngIf="privacy.touched && privacy.invalid">
+        Privacy required
+    </div>
+    <ng-container *ngTemplateOutlet="infoInput; context: {$implicit:privacy}"></ng-container>
+  </div>
+  <div class="form-group">
+    <label for="gender"></label>
+    <select required ngModel name="gender" #genderMod="ngModel" id="gender" class="form-control">
+      <option value="">[select]</option>
+      <option *ngFor="let gender of genderList" [ngValue]="gender.id">
+        {{gender.label}}
+      </option>
+    </select>
+    <ng-container *ngTemplateOutlet="infoInput; context: {$implicit:genderMod}"></ng-container>
+  </div>
+  <p>How do you like?</p>
+  <div *ngFor="let l of likeList" class="form-check">
+      <input id="like-{{l.id}}" ngModel name="like" [value]="l.id" type="radio" class="form-check-input" >
+      <label for="like-{{l.id}}" class="form-check-label">{{l.label}}</label>   
+  </div>
+  <div class="card card-body text-white bg-primary">
+    <p>
+        form.value: f.value: {{f.value|json}},
+        form.invalid: {{f.invalid}}
+    </p>
+  </div>
+  <button class="btn btn-primary" [disabled]="f.invalid" >submit</button>
+</form>
+<ng-template #infoInput let-model>
+    <div class="card card-body text-white bg-secondary">
+      <p>
+        value: <b>{{model.value}}</b>,
+        touched: <b>{{model.touched}}</b>, 
+        invalid: <b>{{model.invalid}}</b>, 
+        errors: <mark>{{model.errors|json}}</mark>
+      </p>
+    </div>
+</ng-template>

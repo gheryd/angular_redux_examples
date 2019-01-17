@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {select} from 'ng2-redux'
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  menu:{title:string, path:string}[] = 
+    [
+      {title:"home", path:"/"}
+      ,{title:"form", path:"/form"}
+      ,{title:"custom directive", path:"/example-directive"}
+      ,{title:"products", path:"/products"}
+      ,{title:"counter", path:"/counter"}
+      ,{title:"events", path:"/events"}
+    ]
+
+  @select() logMessage:string
+
   title = 'my-app';
+
+  constructor(){
+    
+  }
+  
+
+
+  
+
 }
