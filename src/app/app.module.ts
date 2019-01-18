@@ -1,3 +1,5 @@
+import { CanActivateImpl } from './services/can-activate-impl.service';
+import { AuthService } from './services/auth.service';
 import { AppAction } from './store/actions';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,7 +23,9 @@ import {ExampleDirectiveComponent} from './components/example-directive/example-
 import { CounterComponent } from './components/counter/counter.component';
 import { ExampleEventsComponent } from './components/example-events/example-events.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { NotfoundComponent } from './components/notfound/notfound.component'
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthContentComponent } from './components/auth-content/auth-content.component'
 
 @NgModule({
   declarations: [
@@ -37,15 +41,19 @@ import { NotfoundComponent } from './components/notfound/notfound.component'
     CounterComponent,
     ExampleEventsComponent,
     ProductDetailComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    LoginComponent,
+    AuthContentComponent
   ],
   imports: [
     BrowserModule,
     NgReduxModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: 'form', component: FormComponent}
-      ,{path: '', component:HomeComponent}
+      {path: '', component:HomeComponent}
+      ,{path: 'login', component:LoginComponent}
+      ,{path: 'authorized', component:AuthContentComponent, canActivate:[CanActivateImpl]}
+      ,{path: 'form', component: FormComponent}
       ,{path: 'example-directive', component:ExampleDirectiveComponent}
       ,{path: 'products', component: ProductsComponent}
       ,{path: 'counter', component: CounterComponent}
@@ -56,7 +64,10 @@ import { NotfoundComponent } from './components/notfound/notfound.component'
   ],
   providers: [
     ProductsService,
-    AppAction
+    AppAction,
+    AuthService,
+    CanActivateImpl
+
   ],
   bootstrap: [AppComponent]
 })

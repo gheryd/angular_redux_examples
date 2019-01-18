@@ -1,18 +1,23 @@
 <div class="container-fluid">
-  <div>
-    <h4>Angular+Redux examples</h4>
-  </div>
-  <small>redux message: {{logMessage|async}}</small>
-  <div class="row">
-      <div class="col-2 list-group">
-          <a class="list-group-item list-group-item-action" 
-            *ngFor="let item of menu" 
-            routerLinkActive="active" 
-            [routerLink]="item.path"
-            [routerLinkActiveOptions]="{exact:true}">{{item.title}}</a>
-      </div>
-      <div class="col">
-          <router-outlet></router-outlet>
-      </div>
-  </div>
+    <div>
+        <h4>Angular+Redux examples</h4>
+    </div>
+    <small>redux message: <strong>{{logMessage|async}}</strong></small>,
+    <small>user logged in: <strong>{{isLoggedIn|json}}</strong></small>
+    <button *ngIf="isLoggedIn" class="btn btn-primary btn-sm float-right" (click)="logout()">
+        logout
+    </button>
+    <button *ngIf="showLoginButton" class="btn btn-primary btn-sm float-right" (click)="logout()">
+        login
+    </button>
+
+    <div class="row">
+        <div class="col-2 list-group">
+            <a class="list-group-item list-group-item-action" *ngFor="let item of menu" routerLinkActive="active"
+                [routerLink]="item.path" [routerLinkActiveOptions]="{exact:true}">{{item.title}}</a>
+        </div>
+        <div class="col">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
