@@ -1,7 +1,7 @@
-import { ProductI } from './../models/product';
+import { ProductI } from './../../models/product';
 import {Component, Input, Output, EventEmitter} from '@angular/core'
-import { AppAction } from '../actions';
-import { ProductsService } from '../services/products.service';
+import { AppAction } from '../../store/actions';
+import { ProductsService } from '../../services/products.service';
 import {select} from 'ng2-redux'
 
 @Component({

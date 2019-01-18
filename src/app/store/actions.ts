@@ -1,6 +1,6 @@
 import { IAppState } from './store';
 import { NgRedux } from 'ng2-redux';
-import { ProductI } from './models/product';
+import { ProductI } from '../models/product';
 import { Injectable } from '@angular/core';
 
 export const INCREMENT = 'INCREMENT';

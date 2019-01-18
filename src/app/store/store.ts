@@ -1,4 +1,4 @@
-import { ProductI } from './models/product';
+import { ProductI } from '../models/product';
 import {INCREMENT, DECREMENT,RESET, PRODUCT_REMOVE, PRODUCT_SET_LIST, LOG_MESSAGE_SET} from './actions'
 
 

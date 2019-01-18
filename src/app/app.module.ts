@@ -1,28 +1,27 @@
-import { AppAction } from './actions';
+import { AppAction } from './store/actions';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, isDevMode } from '@angular/core';
 import { FormsModule} from '@angular/forms'
 import {NgRedux, NgReduxModule, DevToolsExtension} from 'ng2-redux'
 import {RouterModule} from '@angular/router';
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app/app.component';
 
-import {IAppState, rootReducer, INITIAL_STATE} from './store'
-
-import { CamelizePipe } from './camelize.pipe';
+import {IAppState, rootReducer, INITIAL_STATE} from './store/store'
+import { MyDirectiveDirective } from './directives/my-directive.directive';
+import { CamelizePipe } from './pipes/camelize.pipe';
 import { ProductsService } from './services/products.service';
-
-import { ProductsComponent } from './products/products.component';
-import { ProductComponent } from './product/product.component';
-import { PanelComponent } from './panel/panel.component';
-import { MyDirectiveDirective } from './my-directive.directive';
-import { FormComponent } from './form/form.component';
-import { HomeComponent } from './home/home.component';
-import {ExampleDirectiveComponent} from './example-directive/example-directive.component';
-import { CounterComponent } from './counter/counter.component';
-import { ExampleEventsComponent } from './example-events/example-events.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { NotfoundComponent } from './notfound/notfound.component'
+//components
+import { ProductsComponent } from './components/products/products.component';
+import { ProductComponent } from './components/product/product.component';
+import { PanelComponent } from './components/panel/panel.component';
+import { FormComponent } from './components/form/form.component';
+import { HomeComponent } from './components/home/home.component';
+import {ExampleDirectiveComponent} from './components/example-directive/example-directive.component';
+import { CounterComponent } from './components/counter/counter.component';
+import { ExampleEventsComponent } from './components/example-events/example-events.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { NotfoundComponent } from './components/notfound/notfound.component'
 
 @NgModule({
   declarations: [
