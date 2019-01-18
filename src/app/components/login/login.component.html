@@ -1,6 +1,7 @@
 
-<panel [enableFooter]="false">
+<panel>
   <ng-container class="header">Login Form</ng-container>
+  <ng-container class="footer">avaible users: ('user1', 'user1pwd') or ('user2','user2pwd')</ng-container>
   <ng-container class="body">
       <form *ngIf="!loading" #f="ngForm" (ngSubmit)="signin(f)">
           <div class="form-group">
