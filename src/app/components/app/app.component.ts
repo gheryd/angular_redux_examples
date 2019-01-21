@@ -15,6 +15,7 @@ export class AppComponent implements OnInit{
     [
       {title:"home", path:"/"}
       ,{title:"authorized content", path:"/authorized"}
+      ,{title:"admin content", path:"/admin"}
       ,{title:"form", path:"/form"}
       ,{title:"custom directive", path:"/example-directive"}
       ,{title:"products", path:"/products"}
@@ -27,19 +28,25 @@ export class AppComponent implements OnInit{
 
   title = 'my-app';
   isLoggedIn: boolean
+  isAdmin: boolean
   showLoginButton: boolean= false
+  username:string = ""
 
   constructor(private authService:AuthService, private router:Router){
     this.authService.isLoggedIn().subscribe(
       (logged) => {
+        const user = authService.user;
         this.isLoggedIn = logged
         this.showLoginButton = this.router.url!=='/login' && !logged
+        this.isAdmin = user && user.isAdmin;
+        this.username = user && user.username
         router.navigate(["/login"]);
       }
     );
-    router.events.filter( event => event instanceof NavigationEnd)
-    .map(event=>(<RouterEvent>event).url )
-    .subscribe( (url) => this.showLoginButton = url!=='/login' && !this.isLoggedIn );
+    router.events
+      .filter( event => event instanceof NavigationEnd)
+      .map(event=>(<RouterEvent>event).url )
+      .subscribe( (url) => this.showLoginButton = url!=='/login' && !this.isLoggedIn );
   }
   
 

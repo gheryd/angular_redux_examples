@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loading:boolean = false;
-  userAuth:UserAuthI = {username:"", password:""}
+  userAuth:UserAuthI = {username:"", password:"", isAdmin:false}
 
   constructor(private authService:AuthService, private router:Router) {
       authService.isLoggedIn().subscribe(
@@ -33,7 +33,11 @@ export class LoginComponent implements OnInit {
       (user) => {
         this.loading = false;
         if(user){
-          this.router.navigate(["/authorized"])
+          if(user.isAdmin){
+            this.router.navigate(["/admin"])
+          }else {
+            this.router.navigate(["/authorized"])
+          }
         }else {
           alert("login incorrect!");
         }

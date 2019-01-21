@@ -11,6 +11,7 @@ export class CanActivateImpl implements CanActivate{
     }
 
     canActivate(){
+        console.log("can activate");
         return this.auth.isLoggedIn().map(
             (loggedIn) => {
                 console.log("canActivated logged in", loggedIn);

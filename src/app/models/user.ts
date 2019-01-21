@@ -1,5 +1,6 @@
 export interface UserI{
-    username:string
+    username:string;
+    isAdmin: boolean;
 }
 
 export interface UserAuthI extends UserI{

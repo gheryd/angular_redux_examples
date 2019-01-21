@@ -2,8 +2,11 @@
     <div>
         <h4>Angular+Redux examples</h4>
     </div>
-    <small>redux message: <strong>{{logMessage|async}}</strong></small>,
-    <small>user logged in: <strong>{{isLoggedIn|json}}</strong></small>
+    <small>redux message: <strong>{{logMessage|async}}</strong></small>
+    <ng-container *ngIf="isLoggedIn">
+        <span class="badge badge-success">username: <strong>{{username}}</strong></span> 
+        <span class="badge badge-success">isAdmin: <strong>{{isAdmin?"Y": "N"}}</strong></span>
+    </ng-container>
     <button *ngIf="isLoggedIn" class="btn btn-primary btn-sm float-right" (click)="logout()">
         logout
     </button>

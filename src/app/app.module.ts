@@ -1,3 +1,4 @@
+import { CanActivateAdmin } from './services/can-activate-admin.service';
 import { CanActivateImpl } from './services/can-activate-impl.service';
 import { AuthService } from './services/auth.service';
 import { AppAction } from './store/actions';
@@ -25,7 +26,8 @@ import { ExampleEventsComponent } from './components/example-events/example-even
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { LoginComponent } from './components/login/login.component';
-import { AuthContentComponent } from './components/auth-content/auth-content.component'
+import { AuthContentComponent } from './components/auth-content/auth-content.component';
+import { AuthAdminContentComponent } from './components/auth-admin-content/auth-admin-content.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { AuthContentComponent } from './components/auth-content/auth-content.com
     ProductDetailComponent,
     NotfoundComponent,
     LoginComponent,
-    AuthContentComponent
+    AuthContentComponent,
+    AuthAdminContentComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { AuthContentComponent } from './components/auth-content/auth-content.com
       {path: '', component:HomeComponent}
       ,{path: 'login', component:LoginComponent}
       ,{path: 'authorized', component:AuthContentComponent, canActivate:[CanActivateImpl]}
+      ,{path: 'admin', component:AuthAdminContentComponent, canActivate:[CanActivateImpl, CanActivateAdmin]}
       ,{path: 'form', component: FormComponent}
       ,{path: 'example-directive', component:ExampleDirectiveComponent}
       ,{path: 'products', component: ProductsComponent}
@@ -66,7 +70,8 @@ import { AuthContentComponent } from './components/auth-content/auth-content.com
     ProductsService,
     AppAction,
     AuthService,
-    CanActivateImpl
+    CanActivateImpl,
+    CanActivateAdmin
 
   ],
   bootstrap: [AppComponent]
