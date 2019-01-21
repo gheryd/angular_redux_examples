@@ -2,7 +2,7 @@ import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {select} from 'ng2-redux'
 import { Observable, of } from 'rxjs';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, RouterEvent } from '@angular/router';
 
 
 @Component({
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit{
       }
     );
     router.events.filter( event => event instanceof NavigationEnd)
-    .map(event=>event.url )
+    .map(event=>(<RouterEvent>event).url )
     .subscribe( (url) => this.showLoginButton = url!=='/login' && !this.isLoggedIn );
   }
   
