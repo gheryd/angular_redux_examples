@@ -1,5 +1,8 @@
-var connect = require('connect');
-var serveStatic = require('serve-static');
-connect().use(serveStatic(__dirname+"/../dist/my-app")).listen(8080, function(){
-    console.log('Server running on 8080...');
-});
+const express = require('express');
+const path = require('path');
+const app = express();
+const distPath = path.join(__dirname, '../dist/my-app');
+const assets = express.static(distPath);
+app.use(assets);
+app.use((req,res)=>res.sendFile(distPath+'/index.html'));
+app.listen(3000, () => console.log("listen 3000..."));

@@ -6,46 +6,46 @@ import { Injectable } from '@angular/core';
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const RESET = 'RESET';
-export const PRODUCT_REMOVE = "PRODUCT_REMOVE";
-export const PRODUCT_SET_LIST = "PRODUCT_SET_LIST"
-export const LOG_MESSAGE_SET = "LOG_MESSAGE"
+export const PRODUCT_REMOVE = 'PRODUCT_REMOVE';
+export const PRODUCT_SET_LIST = 'PRODUCT_SET_LIST';
+export const LOG_MESSAGE_SET = 'LOG_MESSAGE';
 
 @Injectable()
-export class AppAction{
-    constructor(private ngRedux: NgRedux<IAppState>){
-        
+export class AppAction {
+    constructor(private ngRedux: NgRedux<IAppState>) {
+
     }
 
     increment = () => {
-        this.dispatch({type: INCREMENT})
-        this.log("increment counter");
+        this.dispatch({type: INCREMENT});
+        this.log('increment counter');
     }
-    
+
     decrement = () => {
-        this.dispatch({type: DECREMENT})
-        this.log("decrement counter");
+        this.dispatch({type: DECREMENT});
+        this.log('decrement counter');
     }
-    
+
     reset = () => {
-        this.dispatch({type: RESET})
-        this.log("reset counter");
+        this.dispatch({type: RESET});
+        this.log('reset counter');
     }
-    
-    removeProduct(product:ProductI){
-        this.dispatch({type:PRODUCT_REMOVE, product:product})
-        this.log("remove product: "+product.name);
+
+    removeProduct(product: ProductI) {
+        this.dispatch({type: PRODUCT_REMOVE, product: product});
+        this.log('remove product: ' + product.name);
     }
-    
-    setProducts(products:ProductI[]){
-        this.dispatch({type:PRODUCT_SET_LIST, products:products})
-        this.log("set products");
+
+    setProducts(products: ProductI[]) {
+        this.dispatch({type: PRODUCT_SET_LIST, products: products});
+        this.log('set products');
     }
-    
-    log(msg:string){
-        this.dispatch({type:LOG_MESSAGE_SET, message:msg})
+
+    log(msg: string) {
+        this.dispatch({type: LOG_MESSAGE_SET, message: msg});
     }
-    
-    private dispatch(action){
+
+    private dispatch(action) {
         this.ngRedux.dispatch(action);
     }
 }

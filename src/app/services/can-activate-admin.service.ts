@@ -5,14 +5,14 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CanActivateAdmin implements CanActivate{
+export class CanActivateAdmin implements CanActivate {
 
   constructor(private authService: AuthService) { }
 
-  canActivate():boolean{
-    console.log("can activate admin");
+  canActivate(): boolean {
+    console.log('can activate admin');
     const user = this.authService.user;
-    if(user && user.isAdmin){
+    if (user && user.isAdmin) {
       return true;
     }
     return false;

@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  loading:boolean = false;
-  userAuth:UserAuthI = {username:"", password:"", isAdmin:false}
+  loading = false;
+  userAuth: UserAuthI = {username: '', password: '', isAdmin: false};
 
-  constructor(private authService:AuthService, private router:Router) {
+  constructor(private authService: AuthService, private router: Router) {
       authService.isLoggedIn().subscribe(
         (logged) => {
-          if(logged) {
-            router.navigate(["/"])
+          if (logged) {
+            router.navigate(['/']);
           }
         }
       );
@@ -27,21 +27,21 @@ export class LoginComponent implements OnInit {
 
   }
 
-  signin(f){
+  signin(f) {
     this.loading = true;
     this.authService.doAuth(this.userAuth).subscribe(
       (user) => {
         this.loading = false;
-        if(user){
-          if(user.isAdmin){
-            this.router.navigate(["/admin"])
-          }else {
-            this.router.navigate(["/authorized"])
+        if (user) {
+          if (user.isAdmin) {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/authorized']);
           }
-        }else {
-          alert("login incorrect!");
+        } else {
+          alert('login incorrect!');
         }
-        
+
       }
     );
   }

@@ -8,18 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExampleEventsComponent implements OnInit {
 
-  textInput:String = "";
-  keyInput:String = "";
-  email:String = "test@test.it";
-  myDate:Date = new Date()
- 
+  textInput: String = '';
+  keyInput: String = '';
+  email: String = 'test@test.it';
+  myDate: Date = new Date();
+
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onInput($event){
+  onInput($event) {
     this.keyInput = $event.keyCode;
     this.textInput = $event.target.value;
   }

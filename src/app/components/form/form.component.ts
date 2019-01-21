@@ -7,16 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  genderList:{id:string, label:string}[] = [
-    {id:"M", label:"male"},
-    {id:"F", label:"female"}
-  ]
+  genderList: {id: string, label: string}[] = [
+    {id: 'M', label: 'male'},
+    {id: 'F', label: 'female'}
+  ];
 
-  likeList:{id:number, label:string}[] = [
-    {id:1, label:"books"},
-    {id:2, label:"sport"},
-    {id:3, label: "cakes"}
-  ]
+  likeList: {id: number, label: string}[] = [
+    {id: 1, label: 'books'},
+    {id: 2, label: 'sport'},
+    {id: 3, label: 'cakes'}
+  ];
 
   constructor() { }
 

@@ -6,9 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./panel.component.css']
 })
 export class PanelComponent implements OnInit {
-  @Input()enableFooter:boolean=true;
-  @Input()enableHeader:boolean=true;
-  
+  @Input()enableFooter = true;
+  @Input()enableHeader = true;
+
   constructor() { }
 
   ngOnInit() {

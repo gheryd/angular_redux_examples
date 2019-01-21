@@ -10,27 +10,27 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  
-  product:ProductI
-  loading: boolean = true;
 
-  constructor(private router:Router,private route:ActivatedRoute, private service:ProductsService) { }
+  product: ProductI;
+  loading = true;
 
-  goToProducts(){
+  constructor(private router: Router, private route: ActivatedRoute, private service: ProductsService) { }
+
+  goToProducts() {
     this.router.navigate(['/products']);
   }
 
   ngOnInit() {
     this.route.paramMap.switchMap(
-      params=> {
+      params => {
         this.loading = true;
         const id = +params.get('id');
         return this.service.getProductById( id );
       }
     ).subscribe(
-      product=> {
+      product => {
         this.loading = false;
-        this.product = product
+        this.product = product;
       }
     );
   }

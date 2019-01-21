@@ -5,16 +5,16 @@ import { AppAction } from './store/actions';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, isDevMode } from '@angular/core';
-import { FormsModule} from '@angular/forms'
-import {NgRedux, NgReduxModule, DevToolsExtension} from 'ng2-redux'
+import { FormsModule} from '@angular/forms';
+import {NgRedux, NgReduxModule, DevToolsExtension} from 'ng2-redux';
 import {RouterModule} from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 
-import {IAppState, rootReducer, INITIAL_STATE} from './store/store'
+import {IAppState, rootReducer, INITIAL_STATE} from './store/store';
 import { MyDirectiveDirective } from './directives/my-directive.directive';
 import { CamelizePipe } from './pipes/camelize.pipe';
 import { ProductsService } from './services/products.service';
-//components
+// components
 import { ProductsComponent } from './components/products/products.component';
 import { ProductComponent } from './components/product/product.component';
 import { PanelComponent } from './components/panel/panel.component';
@@ -27,7 +27,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthContentComponent } from './components/auth-content/auth-content.component';
-import { AuthAdminContentComponent } from './components/auth-admin-content/auth-admin-content.component'
+import { AuthAdminContentComponent } from './components/auth-admin-content/auth-admin-content.component';
 
 @NgModule({
   declarations: [
@@ -53,17 +53,17 @@ import { AuthAdminContentComponent } from './components/auth-admin-content/auth-
     NgReduxModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: '', component:HomeComponent}
-      ,{path: 'login', component:LoginComponent}
-      ,{path: 'authorized', component:AuthContentComponent, canActivate:[CanActivateImpl]}
-      ,{path: 'admin', component:AuthAdminContentComponent, canActivate:[CanActivateImpl, CanActivateAdmin]}
-      ,{path: 'form', component: FormComponent}
-      ,{path: 'example-directive', component:ExampleDirectiveComponent}
-      ,{path: 'products', component: ProductsComponent}
-      ,{path: 'counter', component: CounterComponent}
-      ,{path: 'events', component: ExampleEventsComponent}
-      ,{path: 'product/:id', component: ProductDetailComponent}
-      ,{path: '**', component: NotfoundComponent}
+      {path: '', component: HomeComponent}
+      , {path: 'login', component: LoginComponent}
+      , {path: 'authorized', component: AuthContentComponent, canActivate: [CanActivateImpl]}
+      , {path: 'admin', component: AuthAdminContentComponent, canActivate: [CanActivateImpl, CanActivateAdmin]}
+      , {path: 'form', component: FormComponent}
+      , {path: 'example-directive', component: ExampleDirectiveComponent}
+      , {path: 'products', component: ProductsComponent}
+      , {path: 'counter', component: CounterComponent}
+      , {path: 'events', component: ExampleEventsComponent}
+      , {path: 'product/:id', component: ProductDetailComponent}
+      , {path: '**', component: NotfoundComponent}
     ])
   ],
   providers: [
@@ -76,12 +76,12 @@ import { AuthAdminContentComponent } from './components/auth-admin-content/auth-
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  constructor(ngRedux: NgRedux<IAppState>, devTools: DevToolsExtension){
-    const enhancers = isDevMode ? [devTools.enhancer()] : []
-    const middelwares = []
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>, devTools: DevToolsExtension) {
+    const enhancers = isDevMode ? [devTools.enhancer()] : [];
+    const middelwares = [];
     ngRedux.configureStore(
-      rootReducer, 
+      rootReducer,
       INITIAL_STATE,
       middelwares,
       enhancers

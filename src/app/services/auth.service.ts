@@ -8,24 +8,28 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 })
 export class AuthService implements OnDestroy {
 
+  constructor() {
+    window.addEventListener('storage', this.localStorageListener.bind(this));
+  }
+
+  get user(): UserI {
+    return <UserI>this.getUserToken();
+  }
+
+  private static TOKEN = 'token';
+
   private users: UserAuthI[] = [
     { username: 'user1', password: 'user1pwd', isAdmin: false }
     , { username: 'user2', password: 'user2pwd', isAdmin: true }
-  ]
+  ];
+  private isUserLoggedIn = new BehaviorSubject<boolean>(this.checkLoggedIn());
 
-  private static TOKEN: string = "token";
-  private isUserLoggedIn = new BehaviorSubject<boolean>(this.checkLoggedIn())
-
-  constructor() {
-    window.addEventListener("storage", this.localStorageListener.bind(this));
-  }
-
-  private localStorageListener(e) {    
+  private localStorageListener(e) {
       const userToken: UserTokenI = this.getUserToken();
-      if (userToken && e.key==AuthService.TOKEN && !this.checkLoggedIn()) {
+      if (userToken && e.key == AuthService.TOKEN && !this.checkLoggedIn()) {
         localStorage.removeItem(AuthService.TOKEN);
         this.isUserLoggedIn.next(false);
-        
+
       } else if (!userToken) {
         this.isUserLoggedIn.next(false);
       }
@@ -33,15 +37,15 @@ export class AuthService implements OnDestroy {
   }
 
   ngOnDestroy() {
-    window.removeEventListener("storage", this.localStorageListener.bind(this));
+    window.removeEventListener('storage', this.localStorageListener.bind(this));
   }
 
   doAuth(userAuth: UserAuthI): Observable<UserI> {
     const user = this.users.find(
       (u) => userAuth.username == u.username && userAuth.password == u.password
-    )
+    );
     if (user) {
-      const userToken: UserTokenI = this.generateUserToken(user)
+      const userToken: UserTokenI = this.generateUserToken(user);
       localStorage.setItem(AuthService.TOKEN, this.serializeUserToken(userToken));
       this.isUserLoggedIn.next(true);
     } else {
@@ -51,13 +55,13 @@ export class AuthService implements OnDestroy {
   }
 
   private checkLoggedIn(): boolean {
-    
+
     const userToken: UserTokenI = this.getUserToken();
-    
+
     let isLogged: boolean;
     if (userToken) {
       const isExpired = new Date().getTime() > userToken.expireTime;
-      if(isExpired){
+      if (isExpired) {
         localStorage.removeItem(AuthService.TOKEN);
       }
       isLogged = !isExpired;
@@ -69,10 +73,6 @@ export class AuthService implements OnDestroy {
 
   isLoggedIn(): Observable<boolean> {
     return this.isUserLoggedIn.asObservable();
-  }
-
-  get user():UserI {
-    return <UserI>this.getUserToken();
   }
 
   doLogout() {
