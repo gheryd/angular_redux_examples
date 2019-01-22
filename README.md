@@ -1,4 +1,8 @@
-# Simple examples wit Angular and Redux
+# Simple examples with Angular and Redux
+
+
+run `ng serve` or `ng build --prod` and then`node server/index.js`
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
