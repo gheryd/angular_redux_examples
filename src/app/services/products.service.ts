@@ -20,7 +20,7 @@ export class ProductsService {
     }
 
     getProductById(id: number): Observable<ProductI> {
-        return of( this.products.find((p) => p.id == id) ).pipe(delay(2000));
+        return of( this.products.find((p) => p.id === id) ).pipe(delay(2000));
     }
 
 }

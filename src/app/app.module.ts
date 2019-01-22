@@ -26,6 +26,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthContentComponent } from './components/auth-content/auth-content.component';
 import { appRouting } from './app.routing';
+import { ExampleHttpModule } from './example-http/example-http.module';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { appRouting } from './app.routing';
     BrowserModule,
     NgReduxModule,
     FormsModule,
+    ExampleHttpModule,
     AdminModule,
     appRouting
   ],

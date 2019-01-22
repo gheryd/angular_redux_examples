@@ -1,0 +1,20 @@
+<div class="text text-danger">{{error}}</div>
+<table *ngIf="!showLoading" class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>userId</th>
+      <th>id</th>
+      <th>title</th>
+      <th>completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todos">
+      <td>{{todo.userId}}</td>
+      <td>{{todo.id}}</td>
+      <td>{{todo.title}}</td>
+      <td>{{todo.completed?'Y':'N'}}</td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="showLoading">loading...</div>

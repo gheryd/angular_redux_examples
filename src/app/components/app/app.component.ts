@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
       , {title: 'counter', path: '/counter'}
       , {title: 'events', path: '/events'}
       , {title: 'not found', path: 'asdasdasd'}
+      , {title: 'todos list', path: '/todos'}
     ];
 
   @select() logMessage: string;
@@ -40,7 +41,6 @@ export class AppComponent implements OnInit {
         this.showLoginButton = this.router.url !== '/login' && !logged;
         this.isAdmin = user && user.isAdmin;
         this.username = user && user.username;
-        router.navigate(['/login']);
       }
     );
     router.events
