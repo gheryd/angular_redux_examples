@@ -1,4 +1,4 @@
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from '../../app-common/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { UserAuthI } from 'src/app/models/user';
 import { Router } from '@angular/router';

@@ -1,4 +1,4 @@
-import { IAppState } from './store';
+import { IAppState } from '../store/store';
 import { NgRedux } from 'ng2-redux';
 import { ProductI } from '../models/product';
 import { Injectable } from '@angular/core';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppAction } from '../../store/actions';
+import { AppAction } from '../../services/actions';
 import {select} from 'ng2-redux';
 
 @Component({

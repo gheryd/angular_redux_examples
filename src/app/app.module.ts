@@ -1,20 +1,18 @@
-import { CanActivateAdmin } from './services/can-activate-admin.service';
-import { CanActivateImpl } from './services/can-activate-impl.service';
-import { AuthService } from './services/auth.service';
-import { AppAction } from './store/actions';
+import { AdminModule } from './admin/admin.module';
+
+import { AppAction } from './services/actions';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, isDevMode } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import {NgRedux, NgReduxModule, DevToolsExtension} from 'ng2-redux';
-import {RouterModule} from '@angular/router';
-import { AppComponent } from './components/app/app.component';
 
 import {IAppState, rootReducer, INITIAL_STATE} from './store/store';
 import { MyDirectiveDirective } from './directives/my-directive.directive';
 import { CamelizePipe } from './pipes/camelize.pipe';
 import { ProductsService } from './services/products.service';
-// components
+// component
+import { AppComponent } from './components/app/app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductComponent } from './components/product/product.component';
 import { PanelComponent } from './components/panel/panel.component';
@@ -27,7 +25,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthContentComponent } from './components/auth-content/auth-content.component';
-import { AuthAdminContentComponent } from './components/auth-admin-content/auth-admin-content.component';
+import { appRouting } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -45,34 +43,18 @@ import { AuthAdminContentComponent } from './components/auth-admin-content/auth-
     ProductDetailComponent,
     NotfoundComponent,
     LoginComponent,
-    AuthContentComponent,
-    AuthAdminContentComponent
+    AuthContentComponent
   ],
   imports: [
     BrowserModule,
     NgReduxModule,
     FormsModule,
-    RouterModule.forRoot([
-      {path: '', component: HomeComponent}
-      , {path: 'login', component: LoginComponent}
-      , {path: 'authorized', component: AuthContentComponent, canActivate: [CanActivateImpl]}
-      , {path: 'admin', component: AuthAdminContentComponent, canActivate: [CanActivateImpl, CanActivateAdmin]}
-      , {path: 'form', component: FormComponent}
-      , {path: 'example-directive', component: ExampleDirectiveComponent}
-      , {path: 'products', component: ProductsComponent}
-      , {path: 'counter', component: CounterComponent}
-      , {path: 'events', component: ExampleEventsComponent}
-      , {path: 'product/:id', component: ProductDetailComponent}
-      , {path: '**', component: NotfoundComponent}
-    ])
+    AdminModule,
+    appRouting
   ],
   providers: [
     ProductsService,
-    AppAction,
-    AuthService,
-    CanActivateImpl,
-    CanActivateAdmin
-
+    AppAction
   ],
   bootstrap: [AppComponent]
 })

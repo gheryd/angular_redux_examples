@@ -1,5 +1,5 @@
 import { ProductI } from '../models/product';
-import {INCREMENT, DECREMENT, RESET, PRODUCT_REMOVE, PRODUCT_SET_LIST, LOG_MESSAGE_SET} from './actions';
+import {INCREMENT, DECREMENT, RESET, PRODUCT_REMOVE, PRODUCT_SET_LIST, LOG_MESSAGE_SET} from '../services/actions';
 
 
 export interface IAppState {
@@ -30,12 +30,13 @@ export function rootReducer(state: IAppState, action): IAppState {
                 // return {counter: state.counter-1}
                 return Object.assign({}, state, {}, {counter: state.counter - 1});
             }
+            break;
         case RESET:
             return Object.assign({}, state,  {counter: 0});
         case PRODUCT_REMOVE:
             const products = state.products;
             const newProducts = products.filter(
-                (product) => product.name != action.product.name
+                (product) => product.name !== action.product.name
             );
             return Object.assign({}, state, {products: newProducts});
         case PRODUCT_SET_LIST:

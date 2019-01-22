@@ -1,5 +1,5 @@
 import { delay } from 'rxjs/internal/operators';
-import { UserAuthI, UserTokenI, UserI } from './../models/user';
+import { UserAuthI, UserTokenI, UserI } from '../../models/user';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 
@@ -26,7 +26,7 @@ export class AuthService implements OnDestroy {
 
   private localStorageListener(e) {
       const userToken: UserTokenI = this.getUserToken();
-      if (userToken && e.key == AuthService.TOKEN && !this.checkLoggedIn()) {
+      if (userToken && e.key === AuthService.TOKEN && !this.checkLoggedIn()) {
         localStorage.removeItem(AuthService.TOKEN);
         this.isUserLoggedIn.next(false);
 
@@ -42,7 +42,7 @@ export class AuthService implements OnDestroy {
 
   doAuth(userAuth: UserAuthI): Observable<UserI> {
     const user = this.users.find(
-      (u) => userAuth.username == u.username && userAuth.password == u.password
+      (u) => userAuth.username === u.username && userAuth.password === u.password
     );
     if (user) {
       const userToken: UserTokenI = this.generateUserToken(user);

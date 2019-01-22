@@ -1,10 +1,11 @@
 import { ProductI } from './../../models/product';
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import { AppAction } from '../../store/actions';
+import { AppAction } from '../../services/actions';
 import { ProductsService } from '../../services/products.service';
 import {select} from 'ng2-redux';
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'products',
     templateUrl: './products.html'
 })
