@@ -2,9 +2,10 @@ import { AuthService } from './services/auth.service';
 import { CanActivateImpl } from './services/can-activate-impl.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [PanelComponent],
   imports: [
     CommonModule
   ],
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
     AuthService
   ],
   exports: [
-
+    PanelComponent
   ]
 })
 export class AppCommonModule { }

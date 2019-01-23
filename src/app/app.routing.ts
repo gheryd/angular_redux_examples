@@ -10,14 +10,12 @@ import { CounterComponent } from './components/counter/counter.component';
 import { ExampleEventsComponent } from './components/example-events/example-events.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { ExReactiveFormComponent } from './components/ex-reactive-form/ex-reactive-form.component';
 
 export const appRouting  = RouterModule.forRoot([
     {path: '', component: HomeComponent}
     , {path: 'login', component: LoginComponent}
     , {path: 'authorized', component: AuthContentComponent, canActivate: [CanActivateImpl]}
     , {path: 'form', component: FormComponent}
-    , {path: 'reactive-form', component: ExReactiveFormComponent}
     , {path: 'example-directive', component: ExampleDirectiveComponent}
     , {path: 'products', component: ProductsComponent}
     , {path: 'counter', component: CounterComponent}
