@@ -1,3 +1,4 @@
+import { AppAction } from './../../../services/actions';
 import { CityValidators } from './../../validators/city.validators';
 import { ZipcodeValidators } from './../../validators/zipcode.validators';
 import { Component, OnInit } from '@angular/core';
@@ -18,13 +19,13 @@ export class ExReactiveFormComponent implements OnInit {
       Validators.required,
       Validators.email
     ]),
-    city: new FormControl('', null, CityValidators.asyncCheckCity),
+    city: new FormControl('', Validators.required, CityValidators.asyncCheckCity),
     zipcode: new FormControl('', [
       ZipcodeValidators.wrongFormat
     ])
   });
 
-  constructor() { }
+  constructor(private appAction: AppAction) { }
 
   ngOnInit() {
   }
@@ -34,4 +35,16 @@ export class ExReactiveFormComponent implements OnInit {
     return formControl.touched && formControl.invalid;
   }
 
+  doSubmit() {
+    console.log(this.contactForm.value);
+    if (this.contactForm.invalid) {
+      this.appAction.log('invalid form data, NOT submited');
+      this.contactForm.setErrors({
+        noValidData: true
+      })
+    } else {
+      this.appAction.log('form valid, submitted');
+    }
+
+  }
 }

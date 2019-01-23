@@ -13,7 +13,8 @@
 <panel [enableFooter]="false">
   <ng-container class="header">Contact Form</ng-container>
   <ng-container class="body">
-    <form [formGroup]="contactForm">
+    <form [formGroup]="contactForm" (ngSubmit)="doSubmit()">
+      <div *ngIf="contactForm.errors" class="text text-danger">{{contactForm.errors|json}}</div>
       <div class="form-group row">
         <label class="col-form-label col-sm-2">name:</label>
         <div class="col-sm-8">
