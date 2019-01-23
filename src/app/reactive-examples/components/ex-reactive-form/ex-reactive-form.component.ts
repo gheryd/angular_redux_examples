@@ -1,3 +1,4 @@
+import { ZipcodeValidators } from './../../validators/zipcode.validators';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormControlDirective } from '@angular/forms';
 
@@ -17,7 +18,9 @@ export class ExReactiveFormComponent implements OnInit {
       Validators.email
     ]),
     city: new FormControl(),
-    zipcode: new FormControl()
+    zipcode: new FormControl('', [
+      ZipcodeValidators.wrongFormat
+    ])
   });
 
   constructor() { }
@@ -25,7 +28,7 @@ export class ExReactiveFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  showError(fieldName: string): boolean{
+  showError(fieldName: string): boolean {
     const formControl = this.contactForm.get(fieldName);
     return formControl.touched && formControl.invalid;
   }
