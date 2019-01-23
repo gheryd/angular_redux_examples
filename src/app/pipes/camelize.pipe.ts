@@ -10,7 +10,7 @@ export class CamelizePipe implements PipeTransform {
     let camelized = '';
     for (let i = 0; i < words.length; i++) {
       const w = words[i];
-      camelized += i == 0 && !camelizeFirst ? w.toLowerCase() : this.getTitleWord(w);
+      camelized += i === 0 && !camelizeFirst ? w.toLowerCase() : this.getTitleWord(w);
     }
     return camelized;
   }

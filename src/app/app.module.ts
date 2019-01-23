@@ -1,3 +1,4 @@
+import { AppCommonModule } from './app-common/app-common.module';
 import { AdminModule } from './admin/admin.module';
 
 import { AppAction } from './services/actions';
@@ -15,7 +16,6 @@ import { ProductsService } from './services/products.service';
 import { AppComponent } from './components/app/app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductComponent } from './components/product/product.component';
-import { PanelComponent } from './components/panel/panel.component';
 import { FormComponent } from './components/form/form.component';
 import { HomeComponent } from './components/home/home.component';
 import {ExampleDirectiveComponent} from './components/example-directive/example-directive.component';
@@ -35,7 +35,6 @@ import { ReactiveExamplesModule } from './reactive-examples/reactive-examples.mo
     ProductsComponent,
     ProductComponent,
     CamelizePipe,
-    PanelComponent,
     MyDirectiveDirective,
     FormComponent,
     HomeComponent,
@@ -54,6 +53,7 @@ import { ReactiveExamplesModule } from './reactive-examples/reactive-examples.mo
     ReactiveExamplesModule,
     ExampleHttpModule,
     AdminModule,
+    AppCommonModule,
     appRouting
   ],
   providers: [
