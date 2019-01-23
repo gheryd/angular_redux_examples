@@ -14,15 +14,16 @@ export class AppComponent implements OnInit {
   menu: {title: string, path: any}[] =
     [
       {title: 'home', path: '/'}
-      , {title: 'authorized content', path: '/authorized'}
-      , {title: 'admin content', path: '/admin'}
-      , {title: 'form', path: '/form'}
+      , {title: 'authorized content (CanActivate)', path: '/authorized'}
+      , {title: 'admin content (CanActivate)', path: '/admin'}
+      , {title: 'form  (template-driven)', path: '/form'}
+      , {title: 'form (reactive)', path: '/reactive-form'}
       , {title: 'custom directive', path: '/example-directive'}
-      , {title: 'products', path: '/products'}
-      , {title: 'counter', path: '/counter'}
+      , {title: 'products (redux)', path: '/products'}
+      , {title: 'counter (redux)', path: '/counter'}
       , {title: 'events', path: '/events'}
-      , {title: 'not found', path: 'asdasdasd'}
-      , {title: 'todos list', path: '/todos'}
+      , {title: 'not found (route **)', path: 'asdasdasd'}
+      , {title: 'todos list (http example)', path: '/todos'}
     ];
 
   @select() logMessage: string;

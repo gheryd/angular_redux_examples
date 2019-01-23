@@ -27,6 +27,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthContentComponent } from './components/auth-content/auth-content.component';
 import { appRouting } from './app.routing';
 import { ExampleHttpModule } from './example-http/example-http.module';
+import { ExReactiveFormComponent } from './components/ex-reactive-form/ex-reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ExampleHttpModule } from './example-http/example-http.module';
     ProductDetailComponent,
     NotfoundComponent,
     LoginComponent,
-    AuthContentComponent
+    AuthContentComponent,
+    ExReactiveFormComponent
   ],
   imports: [
     BrowserModule,
