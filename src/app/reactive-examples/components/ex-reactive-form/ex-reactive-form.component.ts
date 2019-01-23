@@ -1,3 +1,4 @@
+import { CityValidators } from './../../validators/city.validators';
 import { ZipcodeValidators } from './../../validators/zipcode.validators';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormControlDirective } from '@angular/forms';
@@ -17,7 +18,7 @@ export class ExReactiveFormComponent implements OnInit {
       Validators.required,
       Validators.email
     ]),
-    city: new FormControl(),
+    city: new FormControl('', null, CityValidators.asyncCheckCity),
     zipcode: new FormControl('', [
       ZipcodeValidators.wrongFormat
     ])
