@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div>
         <h4>Angular+Redux examples</h4>
     </div>
@@ -15,7 +15,7 @@
     </button>
 
     <div class="row">
-        <div class="col-2 list-group">
+        <div class="col-2 list-group small">
             <a class="list-group-item list-group-item-action" *ngFor="let item of menu" routerLinkActive="active"
                 [routerLink]="item.path" [routerLinkActiveOptions]="{exact:true}">{{item.title}}</a>
         </div>
